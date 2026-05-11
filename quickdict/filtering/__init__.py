@@ -10,5 +10,7 @@ except ImportError as e:
         stacklevel = 2
     )
     from ._pyfiltering import (
-        pyqd_filter as qd_filter, pyqd_ifilter as qd_ifilter
+        pyqd_filter   as qd_filter,   pyqd_ifilter   as qd_ifilter,
+        pyqd_kfilter  as qd_kfilter,  pyqd_ikfilter  as qd_ikfilter,
+        pyqd_kvfilter as qd_kvfilter, pyqd_ikvfilter as qd_ikvfilter
     )

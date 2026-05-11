@@ -2,9 +2,12 @@
 
 Quick Python dictionary operations.
 ```python
->>> from quickdict import foo
->>> foo(2, 3)
-5
+>>> from quickdict import qd_neg, qd_ifilter
+>>> qd_neg({0: 1, 2: -3})
+{0: -1, 2: 3}
+>>> d = {0: 1, 1: 0, 2: -3}
+>>> qd_ifilter(d)
+{0: 1, 2: -3}
 ```
 
 ## Installation
