@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quickdict"
+version = "0.9"
+description = "Quick Python dictionary operations."
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+authors = [
+  {name="Sebastian Gössl", email="goessl@student.tugraz.at"}
+]
+#dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/goessl/quickdict"
+Documentation = "https://goessl.github.io/quickdict"
+Repository = "https://github.com/goessl/quickdict.git"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["quickdict"]
+
+[[tool.setuptools.ext-modules]]
+name = "quickdict._quickdict"
+sources = ["quickdict/_quickdictmodule.c"]
+py-limited-api = true
