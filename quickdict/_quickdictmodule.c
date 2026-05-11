@@ -3,16 +3,13 @@
 
 
 
-PyDoc_STRVAR(qd_neg_doc,
-"Return a dict with negated values.\n\
-\n\
-C implementation.");
-
+/**
+ * Call directly with C function pointer and METH_O argument.
+ */
 static PyObject*
-qd_neg(PyObject* self, PyObject* m)
+_qd_unary(PyObject* (*op)(PyObject*), PyObject* m)
 {
-    (void)self;
-    //no guard against d==NULL
+    //no guard against m==NULL
     if(!PyMapping_Check(m)) {
         PyErr_SetString(PyExc_TypeError, "m must be a mapping");
         return NULL;
@@ -28,7 +25,7 @@ qd_neg(PyObject* self, PyObject* m)
         PyObject* key;
         PyObject* value;
         while(PyDict_Next(m, &pos, &key, &value)) {
-            PyObject* updated = PyNumber_Negative(value);
+            PyObject* updated = (*op)(value);
             if(!updated) {
                 Py_DECREF(result);
                 return NULL;
@@ -54,7 +51,7 @@ qd_neg(PyObject* self, PyObject* m)
             
             PyObject* key = PyTuple_GET_ITEM(pair, 0);
             PyObject* value = PyTuple_GET_ITEM(pair, 1);
-            PyObject* updated = PyNumber_Negative(value);
+            PyObject* updated = (*op)(value);
             if(!updated) {
                 Py_DECREF(items);
                 Py_DECREF(result);
@@ -75,11 +72,38 @@ qd_neg(PyObject* self, PyObject* m)
 }
 
 
+PyDoc_STRVAR(qd_pos_doc,
+"Return a dict with the unary plus operator applied to the values.\n\
+\n\
+C implementation.");
+
+static PyObject*
+qd_pos(PyObject* self, PyObject* m)
+{
+    (void)self;
+    return _qd_unary(&PyNumber_Positive, m);
+}
+
+
+PyDoc_STRVAR(qd_neg_doc,
+"Return a dict with negated values.\n\
+\n\
+C implementation.");
+
+static PyObject*
+qd_neg(PyObject* self, PyObject* m)
+{
+    (void)self;
+    return _qd_unary(&PyNumber_Negative, m);
+}
+
+
 
 PyDoc_STRVAR(quickdict_doc,
 "quickdict module C implementation.");
 
 static PyMethodDef quickdict_methods[] = {
+    {"qd_pos", qd_pos, METH_O, qd_pos_doc},
     {"qd_neg", qd_neg, METH_O, qd_neg_doc},
     {NULL, NULL, 0, NULL} //sentinel
 };

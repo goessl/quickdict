@@ -1,6 +1,7 @@
+from ._pyquickdict import *
+
 try:
     from ._quickdict import *
-    from ._pyquickdict import *
 except ImportError as e:
     import warnings
     warnings.warn(
@@ -8,5 +9,7 @@ except ImportError as e:
         ImportWarning,
         stacklevel = 2
     )
-    from ._pyquickdict import pyqd_neg as qd_neg
-    from ._pyquickdict import *
+    from ._pyquickdict import (
+        pyqd_pos as qd_pos,
+        pyqd_neg as qd_neg
+    )
