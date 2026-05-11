@@ -1,4 +1,4 @@
-"""quickdict module pure Python implementation."""
+"""quickdict.mapping module pure Python implementation."""
 
 
 

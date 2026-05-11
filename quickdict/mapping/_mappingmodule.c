@@ -185,10 +185,10 @@ qd_ineg(PyObject* self, PyObject* m)
 
 
 
-PyDoc_STRVAR(quickdict_doc,
-"quickdict module C implementation.");
+PyDoc_STRVAR(doc,
+"quickdict.mapping module C implementation.");
 
-static PyMethodDef quickdict_methods[] = {
+static PyMethodDef methods[] = {
     {"qd_pos",  qd_pos,  METH_O, qd_pos_doc},
     {"qd_ipos", qd_ipos, METH_O, qd_ipos_doc},
     {"qd_neg",  qd_neg,  METH_O, qd_neg_doc},
@@ -196,12 +196,12 @@ static PyMethodDef quickdict_methods[] = {
     {NULL, NULL, 0, NULL} //sentinel
 };
 
-static PyModuleDef quickdictmodule = {
+static PyModuleDef module = {
     .m_base = PyModuleDef_HEAD_INIT,
-    .m_name = "quickdict._quickdict",
-    .m_doc  = quickdict_doc,
+    .m_name = "quickdict.mapping._mapping",
+    .m_doc  = doc,
     .m_size = 0,
-    .m_methods = quickdict_methods,
+    .m_methods = methods,
     .m_slots = NULL,
     .m_traverse = NULL,
     .m_clear = NULL,
@@ -209,7 +209,7 @@ static PyModuleDef quickdictmodule = {
 };
 
 PyMODINIT_FUNC
-PyInit__quickdict(void)
+PyInit__mapping(void)
 {
-    return PyModuleDef_Init(&quickdictmodule);
+    return PyModuleDef_Init(&module);
 }

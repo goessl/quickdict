@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
----
-
 # quickdict
 
 Quick Python dictionary operations.
@@ -29,8 +24,6 @@ quickdict ships two implementations of every operation:
 
 On import, `qd_*` resolves to the C extension when available.
 If the C extension is not available, `qd_*` becomes an alias for the corresponding `pyqd_*` function and an `ImportWarning` is raised (code using `qd_*` continues to work unchanged).
-
-::: quickdict
 
 ## Roadmap
 

@@ -65,3 +65,5 @@ extra_javascript:
 
 nav:
   - index.md
+  - mapping.md
+  - filtering.md

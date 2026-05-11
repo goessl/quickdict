@@ -13,7 +13,6 @@ license-files = ["LICEN[CS]E*"]
 authors = [
   {name="Sebastian Gössl", email="goessl@student.tugraz.at"}
 ]
-#dependencies = []
 
 [project.urls]
 Homepage = "https://github.com/goessl/quickdict"
@@ -23,13 +22,12 @@ Repository = "https://github.com/goessl/quickdict.git"
 [project.optional-dependencies]
 test = ["pytest"]
 
-[tool.setuptools]
-packages = ["quickdict"]
-
-[tool.setuptools.package-data]
-quickdict = ["py.typed", "*.pyi"]
+[[tool.setuptools.ext-modules]]
+name = "quickdict.mapping._mapping"
+sources = ["quickdict/mapping/_mappingmodule.c"]
+py-limited-api = true
 
 [[tool.setuptools.ext-modules]]
-name = "quickdict._quickdict"
-sources = ["quickdict/_quickdictmodule.c"]
+name = "quickdict.filtering._filtering"
+sources = ["quickdict/filtering/_filteringmodule.c"]
 py-limited-api = true
