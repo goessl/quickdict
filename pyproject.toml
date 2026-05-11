@@ -26,6 +26,9 @@ test = ["pytest"]
 [tool.setuptools]
 packages = ["quickdict"]
 
+[tool.setuptools.package-data]
+quickdict = ["py.typed", "*.pyi"]
+
 [[tool.setuptools.ext-modules]]
 name = "quickdict._quickdict"
 sources = ["quickdict/_quickdictmodule.c"]

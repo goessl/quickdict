@@ -20,6 +20,16 @@ pip install git+https://github.com/goessl/quickdict.git
 
 ## Usage
 
+quickdict ships two implementations of every operation:
+
+| Name     | Implementation | When to use                       |
+| -------- | -------------- | --------------------------------- |
+| `qd_*`   | C extension    | normal use                        |
+| `pyqd_*` | pure Python    | fallback, benchmarking, debugging |
+
+On import, `qd_*` resolves to the C extension when available.
+If the C extension is not available, `qd_*` becomes an alias for the corresponding `pyqd_*` function and an `ImportWarning` is raised (code using `qd_*` continues to work unchanged).
+
 ::: quickdict
 
 ## Roadmap

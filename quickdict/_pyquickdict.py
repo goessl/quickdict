@@ -2,7 +2,7 @@
 
 
 
-from typing import Any, TypeVar
+from typing import TypeVar
 from collections.abc import Mapping
 
 
