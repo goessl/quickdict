@@ -6,7 +6,7 @@ Quick Python dictionary operations.
 >>> qd_neg({0: 1, 2: -3})
 {0: -1, 2: 3}
 >>> d = {0: 1, 1: 0, 2: -3}
->>> qd_ifilter(d)
+>>> qd_ifilter(None, d)
 {0: 1, 2: -3}
 ```
 

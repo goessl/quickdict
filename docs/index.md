@@ -6,7 +6,7 @@ Quick Python dictionary operations.
 >>> qd_neg({0: 1, 2: -3})
 {0: -1, 2: 3}
 >>> d = {0: 1, 1: 0, 2: -3}
->>> qd_ifilter(d)
+>>> qd_ifilter(None, d)
 {0: 1, 2: -3}
 ```
 
@@ -28,14 +28,14 @@ quickdict ships two implementations of every operation:
 On import, `qd_*` resolves to the C extension when available.
 If the C extension is not available, `qd_*` becomes an alias for the corresponding `pyqd_*` function and an `ImportWarning` is raised (code using `qd_*` continues to work unchanged).
 
-### [Mapping][mapping.md]
+### [Mapping](mapping.md)
 
 | Function   | out-of-place                      | in-place                            |
 | ---------- | --------------------------------- | ----------------------------------- |
 | Unary plus | [`pos`][quickdict.mapping.qd_pos] | [`ipos`][quickdict.mapping.qd_ipos] |
 | Negation   | [`neg`][quickdict.mapping.qd_neg] | [`ineg`][quickdict.mapping.qd_ineg] |
 
-### [Filtering][filtering.md]
+### [Filtering](filtering.md)
 
 | Function        | out-of-place                                  | in-place                                        |
 | --------------- | --------------------------------------------- | ----------------------------------------------- |
