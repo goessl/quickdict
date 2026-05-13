@@ -27,7 +27,7 @@ def pyqd_filter(p:None|Callable[[V],bool], m:Mapping[K,V]) -> dict[K,V]:
     
     Python implementation.
     """
-    if not (p is None or isinstance(p, Callable)):
+    if not (p is None or callable(p)):
         raise TypeError('p must be None or callable')
     if not isinstance(m, Mapping):
         raise TypeError('m must be a mapping')
@@ -44,7 +44,7 @@ def pyqd_kfilter(p:Callable[[K],bool], m:Mapping[K,V]) -> dict[K,V]:
     
     Python implementation.
     """
-    if not isinstance(p, Callable):
+    if not callable(p):
         raise TypeError('p must be callable')
     if not isinstance(m, Mapping):
         raise TypeError('m must be a mapping')
@@ -58,7 +58,7 @@ def pyqd_kvfilter(p:Callable[[K,V],bool], m:Mapping[K,V]) -> dict[K,V]:
     
     Python implementation.
     """
-    if not isinstance(p, Callable):
+    if not callable(p):
         raise TypeError('p must be callable')
     if not isinstance(m, Mapping):
         raise TypeError('m must be a mapping')
@@ -77,7 +77,7 @@ def pyqd_ifilter(p:None|Callable[[V],bool], m:MutableMapping[K,V]) -> MutableMap
     
     Python implementation.
     """
-    if not (p is None or isinstance(p, Callable)):
+    if not (p is None or callable(p)):
         raise TypeError('p must be None or callable')
     if not isinstance(m, MutableMapping):
         raise TypeError('m must be a mutable mapping')
@@ -97,7 +97,7 @@ def pyqd_ikfilter(p:Callable[[K],bool], m:MutableMapping[K,V]) -> MutableMapping
     
     Python implementation.
     """
-    if not isinstance(p, Callable):
+    if not callable(p):
         raise TypeError('p must be callable')
     if not isinstance(m, MutableMapping):
         raise TypeError('m must be a mutable mapping')
@@ -113,7 +113,7 @@ def pyqd_ikvfilter(p:Callable[[K,V],bool], m:MutableMapping[K,V]) -> MutableMapp
     
     Python implementation.
     """
-    if not isinstance(p, Callable):
+    if not callable(p):
         raise TypeError('p must be callable')
     if not isinstance(m, MutableMapping):
         raise TypeError('m must be a mutable mapping')
