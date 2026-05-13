@@ -2,22 +2,50 @@
 
 
 
-from typing import TypeVar
+from typing import Callable, TypeVar
 from collections.abc import Mapping, MutableMapping
 
 
 
-__all__ = ('pyqd_pos', 'pyqd_ipos',
+__all__ = ('pyqd_map', 'pyqd_imap',
+           'pyqd_pos', 'pyqd_ipos',
            'pyqd_neg', 'pyqd_ineg')
 
 
 
-K, V = TypeVar('K'), TypeVar('V')
+K, V, W = TypeVar('K'), TypeVar('V'), TypeVar('W')
 
+
+
+def pyqd_map(p:Callable[[V],W], m:Mapping[K,V]) -> dict[K,W]:
+    """Return a `dict` with `p` applied to the values.
+    
+    Python implementation.
+    """
+    if not callable(p):
+        raise TypeError('p must be callable')
+    if not isinstance(m, Mapping):
+        raise TypeError('m must be a mapping')
+    
+    return {k:p(v) for k, v in m.items()}
+
+def pyqd_imap(p:Callable[[V],V], m:MutableMapping[K,V]) -> MutableMapping[K,V]:
+    """Apply `p` to the values.
+    
+    Python implementation.
+    """
+    if not callable(p):
+        raise TypeError('p must be callable')
+    if not isinstance(m, MutableMapping):
+        raise TypeError('m must be a mutable mapping')
+    
+    for k, v in m.items():
+        m[k] = p(v)
+    return m
 
 
 def pyqd_pos(m:Mapping[K,V]) -> dict[K,V]:
-    """Return a dict with the unary plus operator applied to the values.
+    """Return a `dict` with the unary plus operator applied to the values.
     
     Python implementation.
     """
@@ -40,7 +68,7 @@ def pyqd_ipos(m:MutableMapping[K,V]) -> MutableMapping[K,V]:
 
 
 def pyqd_neg(m:Mapping[K,V]) -> dict[K,V]:
-    """Return a dict with negated values.
+    """Return a `dict` with negated values.
     
     Python implementation.
     """
