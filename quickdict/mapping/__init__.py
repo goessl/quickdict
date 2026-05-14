@@ -1,3 +1,10 @@
+"""quickdict.mapping module.
+
+Mapping of dictionaries.
+"""
+
+
+
 try:
     from ._mapping import *
 except ImportError as e:

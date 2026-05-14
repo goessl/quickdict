@@ -1,3 +1,3 @@
-# Mapping
+# mapping
 
 ::: quickdict.mapping

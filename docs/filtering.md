@@ -1,3 +1,3 @@
-# Filtering
+# filtering
 
 ::: quickdict.filtering

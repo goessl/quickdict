@@ -1,6 +1,11 @@
 # quickdict
 
-Quick Python dictionary operations.
+::: quickdict
+    options:
+      members: false
+
+## Example
+
 ```python
 >>> from quickdict import qd_neg, qd_ifilter
 >>> qd_neg({0: 1, 2: -3})
@@ -18,16 +23,16 @@ pip install git+https://github.com/goessl/quickdict.git
 
 ## Usage
 
-quickdict is a C extension with automatic pure Python fallback.
+`quickdict` is a C extension with automatic pure Python fallback.
 
-### [Mapping](mapping.md)
+### [mapping](mapping.md)
 
 | Function   | out-of-place                      | in-place                            |
 | ---------- | --------------------------------- | ----------------------------------- |
 | Unary plus | [`pos`][quickdict.mapping.qd_pos] | [`ipos`][quickdict.mapping.qd_ipos] |
 | Negation   | [`neg`][quickdict.mapping.qd_neg] | [`ineg`][quickdict.mapping.qd_ineg] |
 
-### [Filtering](filtering.md)
+### [filtering](filtering.md)
 
 | Function        | out-of-place                                  | in-place                                        |
 | --------------- | --------------------------------------------- | ----------------------------------------------- |
@@ -35,10 +40,20 @@ quickdict is a C extension with automatic pure Python fallback.
 | Filter by key   | [`kfilter`][quickdict.filtering.qd_kfilter]   | [`ikfilter`][quickdict.filtering.qd_ikfilter]   |
 | Filter by item  | [`kvfilter`][quickdict.filtering.qd_kvfilter] | [`ikvfilter`][quickdict.filtering.qd_ikvfilter] |
 
+## Performance
+
+All functions are benchmarked with [perfplot](https://github.com/nschloe/perfplot) against the equivalent plain Python dict comprehension.
+
+`quickdict` is about twice as fast as a dict comprehension.
+
+![qd_neg](img/bench_neg.png)
+
+![qd_filter](img/bench_filter.png)
+
 ## Roadmap
 
 - [x] Deploy
-- [ ] Production
+- [x] Production
 - [x] Ballin
 
 ## License (MIT)

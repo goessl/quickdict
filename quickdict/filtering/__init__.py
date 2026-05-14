@@ -1,3 +1,10 @@
+"""quickdict.fitlering module.
+
+Filtering of dictionaries.
+"""
+
+
+
 try:
     from ._filtering import *
 except ImportError as e:
