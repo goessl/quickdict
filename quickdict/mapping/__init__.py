@@ -1,5 +1,3 @@
-from ._pymapping import *
-
 try:
     from ._mapping import *
 except ImportError as e:
@@ -9,8 +7,4 @@ except ImportError as e:
         ImportWarning,
         stacklevel = 2
     )
-    from ._pymapping import (
-        pyqd_map as qd_map, pyqd_imap as qd_imap,
-        pyqd_pos as qd_pos, pyqd_ipos as qd_ipos,
-        pyqd_neg as qd_neg, pyqd_ineg as qd_ineg
-    )
+    from ._pymapping import *
